@@ -2,6 +2,8 @@ from sectioner_pymupdf import extract_sections_from_pdf
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
+import json
+import os
 
 
 def convert_to_sentences(sections):
@@ -20,8 +22,6 @@ def mean_pooling(model_output, attention_mask):
     input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
     return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
-import json
-import os
 
 # Read persona and job to be done from input.json using absolute path
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -36,10 +36,6 @@ persona_job = f"{persona}. {job_to_be_done}"
 tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
 model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
 
-import os
-
-
-# Use absolute path for data directory
 DATA_DIR = os.path.join(SCRIPT_DIR, '..', 'data')
 pdf_files = [f for f in os.listdir(DATA_DIR) if f.endswith('.pdf')]
 
@@ -78,33 +74,54 @@ def check_sentences_for_persona_job(pdf_path):
         })
     return results
 
-if __name__ == "__main__":
-    for pdf_file in pdf_files:
-        pdf_path = os.path.join(DATA_DIR, pdf_file)
-        results = check_sentences_for_persona_job(pdf_path)
-        print(f"\nPDF: {pdf_file}")
-        section_scores = []
-        for section in results:
-            sims = [sim['cosine_similarity'] for sim in section['sentence_similarity']]
-            avg_score = sum(sims) / len(sims) if sims else 0.0
-            max_score = max(sims) if sims else 0.0
-            section_scores.append({
-                'section_title': section['section_title'],
-                'avg_score': avg_score,
-                'max_score': max_score
-            })
-        # Top 5 by average
-        top_avg = sorted(section_scores, key=lambda x: x['avg_score'], reverse=True)[:5]
-        print("  Top 5 sections by average similarity:")
-        for sec in top_avg:
-            print(f"    Section: {sec['section_title']}")
-            print(f"      Average Cosine Similarity: {sec['avg_score']:.4f}")
-        # Top 5 by maximum
-        top_max = sorted(section_scores, key=lambda x: x['max_score'], reverse=True)[:5]
-        print("  Top 5 sections by maximum similarity:")
-        for sec in top_max:
-            print(f"    Section: {sec['section_title']}")
-            print(f"      Maximum Cosine Similarity: {sec['max_score']:.4f}")
+
+def get_top_5_sections(results):
+    """
+    Given results from check_sentences_for_persona_job, returns top 5 sections
+    by average of the top three cosine similarity scores.
+    """
+    section_scores = []
+    for section in results:
+        sims = [sim['cosine_similarity'] for sim in section['sentence_similarity']]
+        # Average of top 3 scores
+        top3 = sorted(sims, reverse=True)[:3]
+        top3_avg = sum(top3) / len(top3) if top3 else 0.0
+        section_scores.append({
+            'section_title': section['section_title'],
+            'top3_avg': top3_avg
+        })
+    # Sort and return top 5
+    top5 = sorted(section_scores, key=lambda x: x['top3_avg'], reverse=True)[:5]
+    return top5
+
+
+# if __name__ == "__main__":
+#     for pdf_file in pdf_files:
+#         pdf_path = os.path.join(DATA_DIR, pdf_file)
+#         results = check_sentences_for_persona_job(pdf_path)
+#         print(f"\nPDF: {pdf_file}")
+#         section_scores = []
+#         for section in results:
+#             sims = [sim['cosine_similarity'] for sim in section['sentence_similarity']]
+#             avg_score = sum(sims) / len(sims) if sims else 0.0
+#             max_score = max(sims) if sims else 0.0
+#             section_scores.append({
+#                 'section_title': section['section_title'],
+#                 'avg_score': avg_score,
+#                 'max_score': max_score
+#             })
+#         # Top 5 by average
+#         top_avg = sorted(section_scores, key=lambda x: x['avg_score'], reverse=True)[:5]
+#         print("  Top 5 sections by average similarity:")
+#         for sec in top_avg:
+#             print(f"    Section: {sec['section_title']}")
+#             print(f"      Average Cosine Similarity: {sec['avg_score']:.4f}")
+#         # Top 5 by maximum
+#         top_max = sorted(section_scores, key=lambda x: x['max_score'], reverse=True)[:5]
+#         print("  Top 5 sections by maximum similarity:")
+#         for sec in top_max:
+#             print(f"    Section: {sec['section_title']}")
+#             print(f"      Maximum Cosine Similarity: {sec['max_score']:.4f}")
 
 
 ##AVERAGE
