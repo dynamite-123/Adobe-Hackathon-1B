@@ -78,40 +78,7 @@ def check_sentences_for_persona_job(pdf_path):
         })
     return results
 
-
-# if __name__ == "__main__":
-    # for pdf_file in pdf_files:
-    #     pdf_path = os.path.join(DATA_DIR, pdf_file)
-    #     print(f"\nPDF: {pdf_file}")
-    #     results = check_sentences_for_persona_job(pdf_path)
-    #     for section in results:
-    #         print(f"  Section: {section['section_title']}")
-    #         for sim in section['sentence_similarity']:
-    #             print(f"    Cosine: {sim['cosine_similarity']:.4f} | {sim['sentence']}")
-
-# if __name__ == "__main__":
-#     all_sims = []
-#     for pdf_file in pdf_files:
-#         pdf_path = os.path.join(DATA_DIR, pdf_file)
-#         results = check_sentences_for_persona_job(pdf_path)
-#         for section in results:
-#             for sim in section['sentence_similarity']:
-#                 all_sims.append({
-#                     'pdf': pdf_file,
-#                     'section': section['section_title'],
-#                     'sentence': sim['sentence'],
-#                     'cosine_similarity': sim['cosine_similarity']
-#                 })
-#     # Sort all sentences by similarity score (descending)
-#     top_sims = sorted(all_sims, key=lambda x: x['cosine_similarity'], reverse=True)[:10]
-#     print("Top 10 sentences most relevant to persona + job to be done:")
-#     for i, item in enumerate(top_sims, 1):
-#         print(f"{i}. PDF: {item['pdf']} | Section: {item['section']}\n   Cosine Similarity: {item['cosine_similarity']:.4f}\n   Sentence: {item['sentence']}")
-
-
 if __name__ == "__main__":
-    # ...existing code...
-    # Print average similarity score for every section in every PDF
     for pdf_file in pdf_files:
         pdf_path = os.path.join(DATA_DIR, pdf_file)
         results = check_sentences_for_persona_job(pdf_path)
@@ -120,12 +87,65 @@ if __name__ == "__main__":
         for section in results:
             sims = [sim['cosine_similarity'] for sim in section['sentence_similarity']]
             avg_score = sum(sims) / len(sims) if sims else 0.0
+            max_score = max(sims) if sims else 0.0
             section_scores.append({
                 'section_title': section['section_title'],
-                'avg_score': avg_score
+                'avg_score': avg_score,
+                'max_score': max_score
             })
-        # Sort sections by avg_score high to low
-        section_scores_sorted = sorted(section_scores, key=lambda x: x['avg_score'], reverse=True)
-        for sec in section_scores_sorted:
-            print(f"  Section: {sec['section_title']}")
-            print(f"    Average Cosine Similarity: {sec['avg_score']:.4f}")
+        # Top 5 by average
+        top_avg = sorted(section_scores, key=lambda x: x['avg_score'], reverse=True)[:5]
+        print("  Top 5 sections by average similarity:")
+        for sec in top_avg:
+            print(f"    Section: {sec['section_title']}")
+            print(f"      Average Cosine Similarity: {sec['avg_score']:.4f}")
+        # Top 5 by maximum
+        top_max = sorted(section_scores, key=lambda x: x['max_score'], reverse=True)[:5]
+        print("  Top 5 sections by maximum similarity:")
+        for sec in top_max:
+            print(f"    Section: {sec['section_title']}")
+            print(f"      Maximum Cosine Similarity: {sec['max_score']:.4f}")
+
+
+##AVERAGE
+# if __name__ == "__main__":
+#     # ...existing code...
+#     # Print average similarity score for every section in every PDF
+#     for pdf_file in pdf_files:
+#         pdf_path = os.path.join(DATA_DIR, pdf_file)
+#         results = check_sentences_for_persona_job(pdf_path)
+#         print(f"\nPDF: {pdf_file}")
+#         section_scores = []
+#         for section in results:
+#             sims = [sim['cosine_similarity'] for sim in section['sentence_similarity']]
+#             avg_score = sum(sims) / len(sims) if sims else 0.0
+#             section_scores.append({
+#                 'section_title': section['section_title'],
+#                 'avg_score': avg_score
+#             })
+#         # Sort sections by avg_score high to low
+#         section_scores_sorted = sorted(section_scores, key=lambda x: x['avg_score'], reverse=True)
+#         for sec in section_scores_sorted:
+#             print(f"  Section: {sec['section_title']}")
+#             print(f"    Average Cosine Similarity: {sec['avg_score']:.4f}")
+
+## MAXIMUM
+# if __name__ == "__main__":
+#     # Print maximum similarity score for every section in every PDF
+#     for pdf_file in pdf_files:
+#         pdf_path = os.path.join(DATA_DIR, pdf_file)
+#         results = check_sentences_for_persona_job(pdf_path)
+#         print(f"\nPDF: {pdf_file}")
+#         section_scores = []
+#         for section in results:
+#             sims = [sim['cosine_similarity'] for sim in section['sentence_similarity']]
+#             max_score = max(sims) if sims else 0.0
+#             section_scores.append({
+#                 'section_title': section['section_title'],
+#                 'max_score': max_score
+#             })
+#         # Sort sections by max_score high to low
+#         section_scores_sorted = sorted(section_scores, key=lambda x: x['max_score'], reverse=True)
+#         for sec in section_scores_sorted:
+#             print(f"  Section: {sec['section_title']}")
+#             print(f"    Maximum Cosine Similarity: {sec['max_score']:.4f}")
