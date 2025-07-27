@@ -5,6 +5,8 @@ from collections import defaultdict
 import argparse
 import json
 import os
+from schemas import Section
+from typing import List
 
 
 def extract_lines_with_fonts(pdf_path):
@@ -49,38 +51,42 @@ def extract_sections_from_pdf(pdf_path):
     for line in lines:
         if is_heading(line):
             if current_section:
-                sections.append({
-                    "document": doc_name,
-                    "section_title": current_section,
-                    "section_content": "\n".join(current_content).strip(),
-                    "page": current_page
-                })
+                section_obj = Section(
+                    document=doc_name,
+                    section_title=current_section,
+                    section_content="\n".join(current_content).strip(),
+                    page_number=current_page
+                )
+                sections.append(section_obj)
                 current_content = []
             current_section = line["text"].strip()
             current_page = line["page"]
         else:
             current_content.append(line["text"])
     if current_section:
-        sections.append({
-            "document": doc_name,
-            "section_title": current_section,
-            "section_content": "\n".join(current_content).strip(),
-            "page": current_page
-        })
+        section_obj = Section(
+            document=doc_name,
+            section_title=current_section,
+            section_content="\n".join(current_content).strip(),
+            page_number=current_page
+        )
+        sections.append(section_obj)
     return sections
 
-# def main(pdf_path, output_path):
-#     print(f"[INFO] Extracting and structuring sections from: {pdf_path}")
-#     sections = heading_based_sections(pdf_path)
-#     if not sections:
-#         print("[ERROR] No sections found in PDF.")
-#         return
-#     with open(output_path, "w", encoding="utf-8") as f:
-#         json.dump(sections, f, indent=2, ensure_ascii=False)
-#     print(f"Structured sections written to {output_path}")
+def extract_all_sections(data_dir) -> List[Section]:
+    """
+    Extracts sections from all PDF documents in the given directory.
+    Returns a list of dicts: document, section_title, section_content, page_number.
+    """
+    sections = []
+    pdf_files = [f for f in os.listdir(data_dir) if f.endswith('.pdf')]
+    for pdf_file in pdf_files:
+        pdf_path = os.path.join(data_dir, pdf_file)
+        doc_sections = extract_sections_from_pdf(pdf_path)
+        for sec in doc_sections:
+            sections.append(sec)
+    return sections
 
-# if __name__ == "__main__":
-#     sample_pdf = "data/South of France - Cities.pdf"
-#     sample_output = "demo_sections_structured.json"
-#     main(sample_pdf, sample_output)
+
+
 
