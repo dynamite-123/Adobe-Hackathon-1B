@@ -1,4 +1,4 @@
-from sectioner_pymupdf import extract_sections_from_pdf
+from pipeline.sectioner_pymupdf import extract_sections_from_pdf
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
