@@ -1,9 +1,4 @@
 import fitz  # PyMuPDF
-from sentence_transformers import SentenceTransformer
-from sklearn.cluster import AgglomerativeClustering
-from collections import defaultdict
-import argparse
-import json
 import os
 from schemas import Section
 from typing import List
@@ -86,7 +81,4 @@ def extract_all_sections(data_dir) -> List[Section]:
         for sec in doc_sections:
             sections.append(sec)
     return sections
-
-
-
 

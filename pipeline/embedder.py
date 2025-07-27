@@ -2,8 +2,6 @@ from pipeline.sectioner_pymupdf import extract_sections_from_pdf
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
-import json
-import os
 from typing import List
 from schemas import Section, SentencedSection, SentenceSimilaritySection, SentenceSimilarity
 
