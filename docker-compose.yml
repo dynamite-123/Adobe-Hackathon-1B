@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  adobe-hackstreet:
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+    container_name: adobe-hackstreet-boys
+    volumes:
+      # Mount collections directory
+      - .:/app/collections:ro
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    # Disable network for offline operation
+    network_mode: "none"
