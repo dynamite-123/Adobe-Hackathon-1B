@@ -1,8 +1,4 @@
-# 🧠 Adobe HackStreet Boys - D│       └── ... (your PDF files)
-│
-├── 🐳 Dockerfile                     # Multi-stage container build
-├── 🐳 docker-compose.yml             # Container orchestration
-├── 📋 .dockerignore                  # Build context exclusions Pipeline
+# 🧠 Adobe HackStreet Boys - Document Intelligence Pipeline
 
 Extract and prioritize relevant document sections for specific personas and their job-to-be-done.
 
@@ -34,23 +30,8 @@ HackStreet-Boys-Adobe-1BAni/
 │       ├── document2.pdf
 │       └── ... (your PDF files)
 │
-├── � Collection 2/                  # Sample dataset 2 (HR Forms)
-│   ├── challenge1b_input.json       # Input configuration
-│   ├── challenge1b_output.json      # Generated results
-│   └── PDFs/                        # Source documents
-│       ├── Learn Acrobat - Fill and Sign.pdf
-│       └── ... (15 Acrobat PDFs)
-│
-├── 📂 Collection 3/                  # Sample dataset 3 (Menu Planning)
-│   ├── challenge1b_input.json       # Input configuration
-│   ├── challenge1b_output.json      # Generated results
-│   └── PDFs/                        # Source documents
-│       ├── Breakfast Ideas.pdf
-│       ├── Dinner Ideas - Mains_1.pdf
-│       └── ... (9 food PDFs)
-│
 ├── 🐳 Dockerfile                     # Multi-stage container build
-├── 🐳 docker-compose.yml             # Development orchestration
+├── 🐳 docker-compose.yml             # Container orchestration
 ├── 📋 .dockerignore                  # Build context exclusions
 ├── 📖 README.md                      # This file
 └── 🚫 .gitignore                     # Git exclusions
@@ -68,19 +49,22 @@ docker build --platform linux/amd64 -t mysolutionname:somerandomidentifier .
 ### **Run Commands**
 
 ```bash
-# Competition format (as required)
+# Competition format (as required) - Linux/Mac
 docker run --rm \
   -v $(pwd):/app/collections \
   --network none \
   mysolutionname:somerandomidentifier
+
+# Competition format (as required) - Windows PowerShell
+docker run --rm -v "${PWD}:/app/collections" --network none mysolutionname:somerandomidentifier
 ```
 
 ## ⚡ Features & Capabilities
 
-- **�️ CPU-only processing** - No GPU required, optimized for standard hardware
+- **🖥️ CPU-only processing** - No GPU required, optimized for standard hardware
 - **📦 Lightweight models** - Uses `all-MiniLM-L6-v2` (~90MB) under 200MB limit
 - **⚡ Fast processing** - ~30-60 seconds for full collections
-- **� Parallel processing** - Multi-collection and multi-document processing
+- **🔄 Parallel processing** - Multi-collection and multi-document processing
 - **📋 Structured output** - JSON format with Pydantic validation
 - **🐳 Containerized** - Docker multi-stage build for production deployment
 - **🔒 Secure** - Runs as non-root user, offline-capable
@@ -89,10 +73,10 @@ docker run --rm \
 
 ### **Processing Pipeline**
 
-1. **� PDF Loading**: Extract text and detect sections using PyMuPDF
+1. **📄 PDF Loading**: Extract text and detect sections using PyMuPDF
 2. **✂️ Sentence Splitting**: Break content into individual sentences
 3. **🧠 Semantic Embedding**: Generate vector representations using transformers
-4. **� Similarity Scoring**: Compare against persona + job-to-be-done query
+4. **🎯 Similarity Scoring**: Compare against persona + job-to-be-done query
 5. **🏆 Ranking & Selection**: Pick top 5 most relevant sections
 6. **📋 Output Generation**: Format as structured JSON
 
@@ -107,8 +91,8 @@ docker run --rm \
     "task": "Plan a trip of 4 days for a group of 10 college friends."
   },
   "documents": [
-    {"filename": "South of France - Cities.pdf", "title": "Cities Guide"},
-    {"filename": "South of France - Cuisine.pdf", "title": "Food Guide"}
+    {"filename": "document1.pdf", "title": "Cities Guide"},
+    {"filename": "document2.pdf", "title": "Food Guide"}
   ]
 }
 ```
@@ -124,15 +108,15 @@ docker run --rm \
   },
   "extracted_sections": [
     {
-      "document": "South of France - Tips.pdf",
-      "section_title": "Planning, and Exploring",
+      "document": "document1.pdf",
+      "section_title": "Planning and Exploring",
       "importance_rank": 1,
       "page_number": 0
     }
   ],
   "subsection_analysis": [
     {
-      "document": "South of France - Tips.pdf", 
+      "document": "document1.pdf", 
       "refined_text": "Planning a trip requires thoughtful preparation...",
       "page_number": 0
     }
@@ -146,11 +130,14 @@ docker run --rm \
 # 1. Build the image
 docker build --platform linux/amd64 -t mysolutionname:somerandomidentifier .
 
-# 2. Run with your data
+# 2. Run with your data (Linux/Mac)
 docker run --rm \
   -v "$(pwd):/app/collections" \
   --network none \
   mysolutionname:somerandomidentifier
+
+# 2. Run with your data (Windows PowerShell)
+docker run --rm -v "${PWD}:/app/collections" --network none mysolutionname:somerandomidentifier
 
 # 3. Check results in Collection*/
 ls Collection*/
@@ -182,7 +169,7 @@ ls Collection*/
 - **Model Loading**: ~5-10 seconds initial startup
 - **Concurrent Collections**: Up to CPU core count
 
-## � Troubleshooting
+## 🔧 Troubleshooting
 
 ### **Common Docker Issues**
 
@@ -198,21 +185,19 @@ docker run --rm -v $(pwd):/app/collections mysolutionname:somerandomidentifier
 
 | Issue | Solution |
 |-------|----------|
-| "No collections found" | Ensure directories named `Collection 1`, `Collection 2`, etc. |
+| "No collections found" | Ensure directories named `Collection 1`, `Collection 2`, etc. exist |
 | "PDF extraction failed" | Check PDFs are text-based, not image-only |
 | "Model download timeout" | Run once with internet, then use `--network none` |
 | "Memory error" | Reduce batch size or process collections sequentially |
 
-## � Performance Benchmarks
+## 📊 Performance Benchmarks
 
 **Test Environment**: 4-core CPU, 8GB RAM, SSD storage
 
 | Collection | Documents | Pages | Processing Time |
 |------------|-----------|-------|-----------------|
-| Collection 1 (Travel) | 7 PDFs | ~35 pages | 45 seconds |
-| Collection 2 (Forms) | 15 PDFs | ~90 pages | 78 seconds |
-| Collection 3 (Food) | 9 PDFs | ~45 pages | 52 seconds |
-| **Total (Parallel)** | **31 PDFs** | **~170 pages** | **~90 seconds** |
+| Collection 1 (Example) | 7 PDFs | ~35 pages | 45 seconds |
+| **Total** | **7 PDFs** | **~35 pages** | **~45 seconds** |
 
 ## 🏆 Team: HackStreet Boys
 
