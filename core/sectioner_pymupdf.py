@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 import os
-from schemas import Section
+from core.schemas import Section
 from typing import List
 
 

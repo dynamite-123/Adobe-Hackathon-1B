@@ -1,4 +1,4 @@
-from schemas import SentenceSimilaritySection, AverageSimilaritySection, SubsectionAnalysis, ExtractedSection
+from .schemas import SentenceSimilaritySection, AverageSimilaritySection, SubsectionAnalysis, ExtractedSection
 from typing import List
 
 def get_top_5_sections(results: List[SentenceSimilaritySection]) -> List[AverageSimilaritySection]:

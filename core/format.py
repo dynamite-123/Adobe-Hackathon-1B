@@ -9,8 +9,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # Add parent directory to path 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from embedder import check_sentences_for_persona_job
-from generate_output import get_top_5_sections, get_top_5_sentence_groups_per_section, get_extracted_sections
+from .embedder import check_sentences_for_persona_job
+from .generate_output import get_top_5_sections, get_top_5_sentence_groups_per_section, get_extracted_sections
 
 def process_trip_planning_input(input_data):
     # Extract metadata
@@ -23,9 +23,12 @@ def process_trip_planning_input(input_data):
 
     # Aggregate results from all PDFs
     all_sections = []
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
+    # PDFs are located in the same collection directory under PDFs/ subfolder
+    collection_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Go up to project root
     for doc in input_data["documents"]:
-        pdf_path = os.path.join(data_dir, doc['filename'])
+        # The PDF path needs to be determined relative to the collection being processed
+        # This will be handled by the calling function
+        pdf_path = doc['filename']  # This should be the full path passed by the caller
         try:
             results = check_sentences_for_persona_job(pdf_path, metadata["persona"] + " " + metadata["job_to_be_done"])
             all_sections.extend(results)

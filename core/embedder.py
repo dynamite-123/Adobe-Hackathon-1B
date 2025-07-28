@@ -1,9 +1,9 @@
-from pipeline.sectioner_pymupdf import extract_sections_from_pdf
+from .sectioner_pymupdf import extract_sections_from_pdf
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
 from typing import List
-from schemas import Section, SentencedSection, SentenceSimilaritySection, SentenceSimilarity
+from .schemas import Section, SentencedSection, SentenceSimilaritySection, SentenceSimilarity
 
 
 def convert_to_sentences(sections: List[Section])-> List[SentencedSection]:
