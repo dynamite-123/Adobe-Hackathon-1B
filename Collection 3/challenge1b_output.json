@@ -13,65 +13,65 @@
     ],
     "persona": "Food Contractor",
     "job_to_be_done": "Prepare a vegetarian buffet-style dinner menu for a corporate gathering, including gluten-free items.",
-    "processing_timestamp": "2025-07-28T21:26:26.079378"
+    "processing_timestamp": "2025-07-28T22:41:18.808036"
   },
   "extracted_sections": [
     {
-      "document": "Breakfast Ideas.pdf",
-      "section_title": "Veggie Wrap",
+      "document": "Dinner Ideas - Sides_4.pdf",
+      "section_title": "Salade Ni\u00e7oise",
       "importance_rank": 1,
-      "page_number": 12
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "section_title": "Hummus and Veggie Pita",
-      "importance_rank": 2,
-      "page_number": 2
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "section_title": "Turkey and Hummus Wrap",
-      "importance_rank": 3,
-      "page_number": 14
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "section_title": "Turkey and Cranberry Wrap",
-      "importance_rank": 4,
-      "page_number": 8
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "section_title": "Spinach and Feta Stu\ufb00ed Pita",
-      "importance_rank": 5,
       "page_number": 10
+    },
+    {
+      "document": "Dinner Ideas - Mains_2.pdf",
+      "section_title": "Chicken Fajitas",
+      "importance_rank": 2,
+      "page_number": 6
+    },
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "section_title": "Greek Moussaka",
+      "importance_rank": 3,
+      "page_number": 10
+    },
+    {
+      "document": "Dinner Ideas - Sides_1.pdf",
+      "section_title": "Baked Beans",
+      "importance_rank": 4,
+      "page_number": 3
+    },
+    {
+      "document": "Dinner Ideas - Sides_1.pdf",
+      "section_title": "Aloo Gobi",
+      "importance_rank": 5,
+      "page_number": 1
     }
   ],
   "subsection_analysis": [
     {
-      "document": "Breakfast Ideas.pdf",
-      "refined_text": "\u2022\nLayer with shredded carrots, cucumber, spinach, and bell pepper Ingredients:\n\u2022\n1 large whole wheat tortilla\n\u2022\n1/4 cup hummus\n\u2022\n1/4 cup shredded carrots\n\u2022\n1/4 cup sliced cucumber\n\u2022\n1/4 cup baby spinach\n\u2022\n1/4 cup sliced bell pepper\nInstructions:\n\u2022\nSpread hummus on the tortilla \u2022\nSlice in half and serve \u2022\nRoll up the tortilla tightly",
-      "page_number": 12
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "refined_text": "Ingredients:\n\u2022\n1 whole wheat pita bread\n\u2022\n1/2 cup hummus\n\u2022\n1/2 cup cucumber, sliced\n\u2022\n1/2 cup bell pepper, sliced\n\u2022\n1/4 cup shredded carrots\n\u2022\n1/4 cup baby spinach\nInstructions:\n\u2022\nCut the pita bread in half to create pockets \u2022\nFill with cucumber, bell pepper, carrots, and spinach \u2022\nSpread hummus inside each pocket",
-      "page_number": 2
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "refined_text": "Ingredients:\n\u2022\n1 whole wheat tortilla\n\u2022\n4 slices turkey breast\n\u2022\n1/4 cup hummus\n\u2022\n1/4 cup shredded carrots\n\u2022\n1/4 cup baby spinach\nInstructions:\n\u2022\nLay the tortilla flat and spread the hummus evenly \u2022\nAdd the turkey, carrots, and spinach \u2022\nRoll up the tortilla tightly and slice in half",
-      "page_number": 14
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "refined_text": "\u2022\nAdd the turkey, spinach, and carrots Ingredients:\n\u2022\n1 whole wheat tortilla\n\u2022\n4 slices turkey breast\n\u2022\n2 tablespoons cranberry sauce\n\u2022\n1/2 cup baby spinach\n\u2022\n1/4 cup shredded carrots\nInstructions:\n\u2022\nLay the tortilla flat and spread the cranberry sauce evenly \u2022\nRoll up the tortilla tightly and slice in half",
-      "page_number": 8
-    },
-    {
-      "document": "Lunch Ideas.pdf",
-      "refined_text": "\u2022\nIn a bowl, combine the spinach, feta cheese, and cherry tomatoes Ingredients:\n\u2022\n1 whole wheat pita bread\n\u2022\n1/2 cup spinach, chopped\n\u2022\n1/4 cup feta cheese, crumbled\n\u2022\n1/4 cup cherry tomatoes, halved\n\u2022\n1 tablespoon olive oil\n\u2022\nSalt and pepper to taste\nInstructions:\n\u2022\nCut the pita bread in half to create pockets \u2022\nStu\ufb00 the mixture into the pita pockets \u2022\nDrizzle with olive oil and season with salt and pepper",
+      "document": "Dinner Ideas - Sides_4.pdf",
+      "refined_text": "Arrange tomatoes, cucumber, onion, green beans, olives, and tuna on a plate Ingredients :4 tomatoes1 cucumber1 small red onion1/4 cup olives1/4 cup green beans2 hard-boiled eggs1 can tuna1/4 cup olive oil2 tablespoons red wine vinegar1 teaspoon Dijon mustard1 teaspoon saltInstructions :Dice tomatoes and cucumber, slice red onion Salpic\u00e3oIngredients :2 cups shredded chicken1 small onion1 carrot1 apple1/4 cup raisins1/4 cup mayonnaise1/4 cup parsley1 teaspoon saltInstructions :Dice onion, grate carrot, and chop apple Mix shredded chicken with onion, carrot, apple, raisins, mayonnaise, choppedparsley, and salt Serve chilled",
       "page_number": 10
+    },
+    {
+      "document": "Dinner Ideas - Mains_2.pdf",
+      "refined_text": "Serve chicken and vegetables in tortillas with desired toppings Ingredients:1 pound chicken breast, sliced1 bell pepper, sliced1 small onion, sliced2 tablespoons fajita seasoning2 tablespoons vegetable oilTortillas for servingShredded lettuce, diced tomatoes, shredded cheese, sour cream, and salsa for toppingsInstructions:In a large skillet, heat vegetable oil over medium heat Cook sliced chicken, bell pepper, and onion until chicken is cooked through andvegetables are tender Stir in fajita seasoning and cook for an additional 2 minutes",
+      "page_number": 6
+    },
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "refined_text": "5 ounces) diced tomatoes1 cup chicken broth1 cup long-grain rice1 teaspoon paprika1 teaspoon thyme1 teaspoon cayenne pepper2 tablespoons olive oilSalt and pepper to tasteInstructions:In a large pot, heat olive oil over medium heat JambalayaIngredients:1 pound chicken breast, cubed1/2 pound sausage, sliced1/2 pound shrimp, peeled and deveined1 small onion, diced2 cloves garlic, minced1 bell pepper, diced1 can (14 Stir in diced tomatoes, chicken broth, rice, paprika, thyme, cayenne pepper, salt, andpepper In a baking dish, layer eggplant slices and meat sauce Ingredients:2 large eggplants, sliced1 pound ground lamb or beef1 small onion, diced2 cloves garlic, minced1 can (14",
+      "page_number": 10
+    },
+    {
+      "document": "Dinner Ideas - Sides_1.pdf",
+      "refined_text": "BanchanIngredients :Assorted small side dishes like pickled radish, spinach, bean sprouts, kimchiInstructions :Prepare each side dish separately Serve as accompaniments to the main meal Mix beans, onion, molasses, brown sugar, ketchup, mustard, salt, and pepper in abaking dish BammyIngredients :2 cups grated cassava1/4 cup coconut milk1 teaspoon saltOil for fryingInstructions :Mix grated cassava with coconut milk and salt Arrange on small plates",
+      "page_number": 3
+    },
+    {
+      "document": "Dinner Ideas - Sides_1.pdf",
+      "refined_text": "AntipastoIngredients :Assorted cured meats (salami, prosciutto)Cheeses (mozzarella, provolone)OlivesMarinated vegetables (artichokes, peppers)BreadsticksInstructions :Arrange meats, cheeses, olives, and vegetables on a platter Form mixture into meatballs AlbondigasIngredients :1/2 pound ground beef1/2 pound ground pork1 small onion2 cloves garlic1/4 cup breadcrumbs1 egg1 teaspoon paprika1 teaspoon salt1/2 teaspoon pepper1/4 cup olive oil1 cup tomato sauceInstructions :Mix ground beef, ground pork, diced onion, minced garlic, breadcrumbs, beatenegg, paprika, salt, and pepper in a bowl Add potatoes and cauliflower, stir to coat with spices Ingredients :2 potatoes1 cauliflower1 small onion2 cloves garlic1 teaspoon cumin1 teaspoon turmeric1 teaspoon coriander1 teaspoon garam masala1 teaspoon salt2 tablespoons oilInstructions :Peel and dice potatoes, cut cauliflower into florets",
+      "page_number": 1
     }
   ]
 }

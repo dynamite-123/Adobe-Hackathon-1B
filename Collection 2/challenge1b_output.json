@@ -19,7 +19,7 @@
     ],
     "persona": "HR professional",
     "job_to_be_done": "Create and manage fillable forms for onboarding and compliance.",
-    "processing_timestamp": "2025-07-28T21:26:26.079432"
+    "processing_timestamp": "2025-07-28T22:41:18.808089"
   },
   "extracted_sections": [
     {
@@ -29,14 +29,14 @@
       "page_number": 1
     },
     {
-      "document": "Learn Acrobat - Fill and Sign.pdf",
-      "section_title": "Interactive form",
+      "document": "Learn Acrobat - Request e-signatures_1.pdf",
+      "section_title": "Set privileges and permissions for others",
       "importance_rank": 2,
-      "page_number": 11
+      "page_number": 20
     },
     {
       "document": "Learn Acrobat - Request e-signatures_1.pdf",
-      "section_title": "Click  Add me  to add yourself as a counter signer.",
+      "section_title": "Click Add me to add yourself as a counter signer.",
       "importance_rank": 3,
       "page_number": 9
     },
@@ -47,37 +47,37 @@
       "page_number": 11
     },
     {
-      "document": "Learn Acrobat - Request e-signatures_1.pdf",
-      "section_title": "Simplified mode for multiple signers",
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "Interactive form",
       "importance_rank": 5,
-      "page_number": 4
+      "page_number": 11
     }
   ],
   "subsection_analysis": [
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "refined_text": "\u2022\nInteractive forms : These contain fields that you can select and fill in You can complete the forms by entering information and adding your signatures The Fill & Sign tool automatically detects the\nform fields like text fields, comb fields, checkboxes, and radio buttons Acrobat\nalso allows you to send your completed forms to others and securely save them in Adobe\ncloud storage It could be a paper form or PDF that\nhasn\u2019t been optimized for form filling",
+      "refined_text": "Interactive forms : These contain fields that you can select and fill in You can complete the forms by entering information and adding your signatures The Fill & Sign tool automatically detects theform fields like text fields, comb fields, checkboxes, and radio buttons Acrobatalso allows you to send your completed forms to others and securely save them in Adobecloud storage It could be a paper form or PDF thathasn't been optimized for form filling",
       "page_number": 1
     },
     {
-      "document": "Learn Acrobat - Fill and Sign.pdf",
-      "refined_text": "To create an interactive form, use the  Prepare Forms  tool See  Create a form from an existing\ndocument",
-      "page_number": 11
+      "document": "Learn Acrobat - Request e-signatures_1.pdf",
+      "refined_text": "Certify a document while leaving portions of it available for form filling , signatures, orcommentsUse Acrobat Pro software to enable users of Reader 9 or later to sign with certificateIDsUse Acrobat Standard or Pro to encrypt a PDF document with a certificate ID to restrictusage such as printing, editing, or copying",
+      "page_number": 20
     },
     {
       "document": "Learn Acrobat - Request e-signatures_1.pdf",
-      "refined_text": "The document is now ready to add any fields that you want the signers to fill in or sign Simple authoring:\n\u2022\nIs limited to the most common types of fields:\n\u2022\nText input (All Text fields are flagged as Required)\n\u2022\nSignature\n\u2022\nSigner's name (Printed)\n\u2022\nSigner's email\n\u2022\nSignature date (Read-Only; Supplied by the system)\n\u2022\nCheckbox\n\u2022\nPlaces fields anywhere you click on the document Advanced authoring:\n\u2022\nAllows access to  all field types  (highlighted in yellow)\n\u2022\nSupports  form field detection  (highlighted in green)\n\u2022\nSupports  Prefill  fields  (highlighted in pink)\n\u2022\nSupports  field assignment  (highlighted in purple and pink)\n\u2022\nSupports  field validation\n\u2022\nSupports  calculated fields\n\u2022\nSupports  conditional fields\n\u2022\nAllows  control of the field text font/appearance\n\u2022\nPlaces fields by dragging them from the menu on the right side of the document Prepare the Agreement and Add Fields:\nYou can now add any necessary fields to the agreement The combined document is opened for you to add fields",
+      "refined_text": "The document is now ready to add any fields that you want the signers to fill in or sign Simple authoring:Is limited to the most common types of fields:Text input (All Text fields are flagged as Required)SignatureSigner's name (Printed)Signer's emailSignature date (Read-Only; Supplied by the system)CheckboxPlaces fields anywhere you click on the document Advanced authoring:Allows access to all field types (highlighted in yellow)Supports form field detection (highlighted in green)Supports Prefill fields (highlighted in pink)Supports field assignment (highlighted in purple and pink)Supports field validationSupports calculated fieldsSupports conditional fieldsAllows control of the field text font/appearancePlaces fields by dragging them from the menu on the right side of the document Prepare the Agreement and Add Fields:You can now add any necessary fields to the agreement The combined document is opened for you to add fields",
       "page_number": 9
     },
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "refined_text": "Acrobat and Acrobat Reader users can use the Fill & Sign tool\nto fill in flat forms You can change a flat form to a fillable form by either using the  Prepare Form  tool or\nenabling the  Fill & Sign  tools",
+      "refined_text": "Acrobat and Acrobat Reader users can use the Fill & Sign toolto fill in flat forms You can change a flat form to a fillable form by either using the Prepare Form tool orenabling the Fill & Sign tools",
       "page_number": 11
     },
     {
-      "document": "Learn Acrobat - Request e-signatures_1.pdf",
-      "refined_text": "That means those fields will be available to\nthe signer for filling the information and signing the form This mode provides simplified authoring with the capability of assigning fields to\nmultiple signers The assigned colors\nto the signers make it easy to distinguish the fields for respective signers When you select a signer from the right pane and add fields in the\nform, the fields are assigned to the signer \u2022\nYou can switch the assignee of any field using the floating toolbar",
-      "page_number": 4
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "To create an interactive form, use the Prepare Forms tool See Create a form from an existingdocument",
+      "page_number": 11
     }
   ]
 }
