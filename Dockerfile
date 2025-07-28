@@ -15,6 +15,10 @@ WORKDIR /build
 COPY core/requirements.txt .
 RUN pip install --no-cache-dir --user -r requirements.txt
 
+# Copy model download script and pre-download the model
+COPY download_model.py .
+RUN python download_model.py
+
 # Stage 2: Runtime image
 FROM python:3.11-slim AS runtime
 
@@ -26,6 +30,9 @@ WORKDIR /app
 
 # Copy Python packages from builder stage
 COPY --from=builder /root/.local /home/app/.local
+
+# Copy model cache from builder stage
+COPY --from=builder /home/app/.cache /home/app/.cache
 
 # Copy application code with proper ownership
 COPY --chown=app:app . .

@@ -2,6 +2,7 @@ from .sectioner_pymupdf import extract_sections_from_pdf
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
+import os
 from typing import List
 from .schemas import Section, SentencedSection, SentenceSimilaritySection, SentenceSimilarity
 
@@ -28,8 +29,22 @@ def mean_pooling(model_output, attention_mask):
     return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
 
-tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
-model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+import os
+from transformers import AutoTokenizer, AutoModel
+
+# Set cache directory for offline model loading
+cache_dir = os.path.expanduser("~/.cache")
+
+tokenizer = AutoTokenizer.from_pretrained(
+    'sentence-transformers/all-MiniLM-L6-v2',
+    cache_dir=cache_dir,
+    local_files_only=True  # Force offline mode
+)
+model = AutoModel.from_pretrained(
+    'sentence-transformers/all-MiniLM-L6-v2',
+    cache_dir=cache_dir,
+    local_files_only=True  # Force offline mode
+)
 
 
 def get_embedding(text):
