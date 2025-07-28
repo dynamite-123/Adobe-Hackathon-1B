@@ -1,4 +1,8 @@
-# 🧠 Adobe HackStreet Boys - Document Intelligence Pipeline
+# 🧠 Adobe HackStreet Boys - D│       └── ... (your PDF files)
+│
+├── 🐳 Dockerfile                     # Multi-stage container build
+├── 🐳 docker-compose.yml             # Container orchestration
+├── 📋 .dockerignore                  # Build context exclusions Pipeline
 
 Extract and prioritize relevant document sections for specific personas and their job-to-be-done.
 
@@ -22,13 +26,13 @@ HackStreet-Boys-Adobe-1BAni/
 │   ├── generate_output.py            # Output formatting & ranking
 │   └── requirements.txt              # Python dependencies
 │
-├── 📂 Collection 1/                  # Sample dataset 1 (Travel Planning)
+├── 📂 Collection 1/                  # Example collection
 │   ├── challenge1b_input.json       # Input configuration
-│   ├── challenge1b_output.json      # Generated results
+│   ├── challenge1b_output.json      # Generated results (after processing)
 │   └── PDFs/                        # Source documents
-│       ├── South of France - Cities.pdf
-│       ├── South of France - Cuisine.pdf
-│       └── ... (7 travel PDFs)
+│       ├── document1.pdf
+│       ├── document2.pdf
+│       └── ... (your PDF files)
 │
 ├── � Collection 2/                  # Sample dataset 2 (HR Forms)
 │   ├── challenge1b_input.json       # Input configuration
@@ -49,7 +53,6 @@ HackStreet-Boys-Adobe-1BAni/
 ├── 🐳 docker-compose.yml             # Development orchestration
 ├── 📋 .dockerignore                  # Build context exclusions
 ├── 📖 README.md                      # This file
-├── 📖 SUBMISSION_README.md           # Competition submission docs
 └── 🚫 .gitignore                     # Git exclusions
 ```
 
