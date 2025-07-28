@@ -3,6 +3,7 @@ import glob
 import json
 from . import format
 from datetime import datetime
+from multiprocessing import Pool, cpu_count
 
 # Root directory containing collections
 def get_collection_dirs(root_dir):
@@ -31,11 +32,32 @@ def process_collection(collection_path):
 def main():
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     collections = get_collection_dirs(root_dir)
-    for collection in collections:
-        collection_path = os.path.join(root_dir, collection)
-        print(f'Processing {collection_path}...')
-        process_collection(collection_path)
+    
+    if not collections:
+        print("No collections found.")
+        return
+    
+    # Prepare collection paths
+    collection_paths = [os.path.join(root_dir, collection) for collection in collections]
+    
+    print(f"Found {len(collections)} collections to process.")
+    print(f"Using {min(len(collections), cpu_count())} processes.")
+    
+    # Use multiprocessing to process collections in parallel
+    with Pool(processes=min(len(collections), cpu_count())) as pool:
+        # Map the process_collection function to all collection paths
+        pool.map(process_collection_with_logging, collection_paths)
+    
     print('All collections processed.')
+
+def process_collection_with_logging(collection_path):
+    """Wrapper function to add logging for multiprocessing"""
+    print(f'Processing {collection_path}...')
+    try:
+        process_collection(collection_path)
+        print(f'Completed {collection_path}')
+    except Exception as e:
+        print(f'Error processing {collection_path}: {str(e)}')
 
 if __name__ == '__main__':
     start = datetime.now()
