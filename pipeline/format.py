@@ -51,6 +51,8 @@ def process_trip_planning_input(input_data):
     return output
 
 if __name__ == "__main__":
+    start = datetime.now()
+
     input_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'input.json')
     output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'output.json')
     with open(input_path, 'r') as f:
@@ -58,3 +60,6 @@ if __name__ == "__main__":
     result = process_trip_planning_input(input_data)
     with open(output_path, 'w') as f:
         json.dump(result, f, indent=2)
+
+    end = datetime.now()
+    print(f"Processing completed in {end - start} seconds")
