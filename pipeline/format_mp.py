@@ -55,8 +55,9 @@ def process_trip_planning_input(input_data, num_processes=None):
     
     # Use multiprocessing for parallel document processing
     if num_processes is None:
-        # Limit to 2-3 processes to avoid memory issues with transformer models
-        num_processes = min(3, len(input_data["documents"]))
+        # Limit to 2 processes to avoid memory issues with transformer models
+        # Each process loads the full model, so fewer processes may be faster
+        num_processes = min(2, len(input_data["documents"]))
     
     print(f"Processing {len(input_data['documents'])} documents using {num_processes} processes...")
     
