@@ -173,5 +173,3 @@ Built for the *Adobe 1B Hackathon* - delivering efficient, scalable document int
 - *Offline operation* with pre-downloaded models  
 
 ---
-
-*Ready to process your documents? Try the Docker commands above!*
