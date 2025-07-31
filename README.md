@@ -151,27 +151,6 @@ ls Collection*/
 - *Model Loading*: ~5-10 seconds initial startup
 - *Concurrent Collections*: Up to CPU core count
 
-## Troubleshooting
-
-### Common Docker Issues
-
-```bash
-# Permission issues on Linux/Mac
-docker run --rm --user $(id -u):$(id -g) ...
-
-# Network debugging (remove --network none)
-docker run --rm -v $(pwd):/app/collections mysolutionname:somerandomidentifier
-```
-
-### Common Processing Issues
-
-| Issue | Solution |
-|-------|----------|
-| "No collections found" | Ensure directories named Collection 1, Collection 2, etc. exist |
-| "PDF extraction failed" | Check PDFs are text-based, not image-only |
-| "Model download timeout" | Run once with internet, then use --network none |
-| "Memory error" | Reduce batch size or process collections sequentially |
-
 ## Performance Benchmarks
 
 *Test Environment*: 4-core CPU, 8GB RAM, SSD storage
