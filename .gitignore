@@ -4,3 +4,8 @@
 *Zone.Identifier
 
 .vscode/
+
+# Ignore collection directories
+Collection*/
+Collections/
+
