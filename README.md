@@ -8,33 +8,34 @@ This is a *CPU-friendly document intelligence pipeline* that processes PDF docum
 
 ## Project Structure
 
-
-HackStreet-Boys-Adobe-1BAni/
+```
+HackStreet-Boys-Adobe-1B/
 ├── core/                          # Main processing engine
-│   ├── __init__.py                   # Module initialization
-│   ├── embedder.py                   # Semantic embedding & similarity
-│   ├── sectioner_pymupdf.py          # PDF text extraction
-│   ├── schemas.py                    # Data models (Pydantic)
-│   ├── format.py                     # Single-threaded processing
-│   ├── format_mp.py                  # Multi-threaded processing
-│   ├── process_collections.py        # Sequential collection processing
-│   ├── process_collections_mp.py     # Parallel collection processing
-│   ├── generate_output.py            # Output formatting & ranking
-│   └── requirements.txt              # Python dependencies
+│   ├── __init__.py               # Module initialization
+│   ├── embedder.py               # Semantic embedding & similarity
+│   ├── sectioner_pymupdf.py      # PDF text extraction
+│   ├── schemas.py                # Data models (Pydantic)
+│   ├── format.py                 # Single-threaded processing
+│   ├── format_mp.py              # Multi-threaded processing
+│   ├── process_collections.py    # Sequential collection processing
+│   ├── process_collections_mp.py # Parallel collection processing
+│   ├── generate_output.py        # Output formatting & ranking
+│   └── requirements.txt          # Python dependencies
 │
-├── Collection 1/                  # Example collection
-│   ├── challenge1b_input.json       # Input configuration
-│   ├── challenge1b_output.json      # Generated results (after processing)
-│   └── PDFs/                        # Source documents
+├── Collection 1/                 # Example collection
+│   ├── challenge1b_input.json   # Input configuration
+│   ├── challenge1b_output.json  # Generated results (after processing)
+│   └── PDFs/                    # Source documents
 │       ├── document1.pdf
 │       ├── document2.pdf
 │       └── ... (your PDF files)
 │
-├── Dockerfile                     # Multi-stage container build
-├── docker-compose.yml             # Container orchestration
-├── .dockerignore                  # Build context exclusions
-├── README.md                      # This file
-└── .gitignore                     # Git exclusions
+├── Dockerfile                   # Multi-stage container build
+├── docker-compose.yml           # Container orchestration
+├── .dockerignore               # Build context exclusions
+├── README.md                   # This file
+└── .gitignore                  # Git exclusions
+```
 
 
 ## Docker Commands & Usage
@@ -50,13 +51,10 @@ docker build --platform linux/amd64 -t mysolutionname:somerandomidentifier .
 
 ```bash
 # Competition format (as required) - Linux/Mac
-docker run --rm \
-  -v $(pwd):/app/collections \
-  --network none \
-  mysolutionname:somerandomidentifier
+docker run --rm -v $(pwd):/app --network none mysolutionname:somerandomidentifier
 
 # Competition format (as required) - Windows PowerShell
-docker run --rm -v "${PWD}:/app/collections" --network none mysolutionname:somerandomidentifier
+docker run --rm -v "${PWD}:/app" --network none mysolutionname:somerandomidentifier
 
 # Check results in Collection*/
 ls Collection*/
